@@ -3,9 +3,6 @@ from typing import Optional, Dict, Any, List, Union
 
 
 def parse_vacancy(vacancy: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    функция для получения информации о вакансии с корректным указанием зарплаты
-    """
     salary = vacancy.get('salary')
 
     if salary:
@@ -33,9 +30,6 @@ def parse_vacancy(vacancy: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def parse_employer_vacancies(employer_id: int) -> List[Dict[str, Any]]:
-    """
-    функция для получения списка вакансий от работодателя на основе его id
-    """
     vacancies_url = f'https://api.hh.ru/vacancies?employer_id={employer_id}'
     vacancies_response = requests.get(vacancies_url)
     vacancies_data = vacancies_response.json()
@@ -49,9 +43,6 @@ def parse_employer_vacancies(employer_id: int) -> List[Dict[str, Any]]:
 
 
 def parse_employer(employer_name: str) -> Optional[Dict[str, Union[int, List[Dict[str, Any]]]]]:
-    """
-    функция для получения информации от работадателя на основе его названия
-    """
     employer_search_url = f'https://api.hh.ru/employers?text={employer_name}'
     employer_search_response = requests.get(employer_search_url)
     employer_search_data = employer_search_response.json()
@@ -69,9 +60,6 @@ def parse_employer(employer_name: str) -> Optional[Dict[str, Union[int, List[Dic
 
 def parse_employers_info(target_employers: List[str]) -> Dict[
     str, Optional[Dict[str, Union[int, List[Dict[str, Any]]]]]]:
-    """
-    получает информацию о работодателях на основе списка с их названием
-    """
     employers_info = {}
     for employer_name in target_employers:
         employer_info = parse_employer(employer_name)

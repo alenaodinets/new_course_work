@@ -1,6 +1,7 @@
 import psycopg2
 from typing import Any, Dict, List, Tuple
 
+
 class DBManager:
 
     def __init__(self, host: str, database: str, user: str, password: str) -> None:
