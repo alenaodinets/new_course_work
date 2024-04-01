@@ -1,4 +1,4 @@
-from dotenv import load_dotenv
+import dotenv
 
 from parser import *
 from DBManager import *
@@ -8,7 +8,7 @@ target_employers = ['Тинькофф', 'Компания Лимарк', 'Carbon
 employers_info = parse_employers_info(target_employers)
 
 
-load_dotenv()
+dotenv.load_dotenv()
 
 
 db_manager = DBManager()
